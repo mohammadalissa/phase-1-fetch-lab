@@ -13,5 +13,10 @@ function renderBooks(books) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  fetchBooks();
+  fetchBooks(); // <-- Add parentheses to call the function
+  function fetchBooks() { // <-- Removed extra semicolon
+    fetch("https://anapioficeandfire.com/api/books")
+      .then(res => res.json())
+      .then(res => renderBooks(res));
+  }
 });
